@@ -2,6 +2,9 @@
 -- DEPRECATED, changing to recent PDK
 -- local BasePlugin = require("kong.plugins.base_plugin")
 -- local MtlsAuth = BasePlugin:extend()
+-- MtlsAuth.VERSION = "1.0.0"
+-- MtlsAuth.PRIORITY = 975
+
 local kong = kong
 local MtlsAuth = {
   VERSION  = "1.0.0",
@@ -43,9 +46,6 @@ local function parse_dn (dn)
 	end
 	return t
 end
-
-MtlsAuth.VERSION = "1.0.0"
-MtlsAuth.PRIORITY = 975
 
 function MtlsAuth:new()
     MtlsAuth.super.new(self, "mtls-auth")
