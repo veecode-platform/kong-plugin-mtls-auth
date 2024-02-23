@@ -1,4 +1,13 @@
-local BasePlugin = require("kong.plugins.base_plugin")
+
+-- DEPRECATED, changing to recent PDK
+-- local BasePlugin = require("kong.plugins.base_plugin")
+-- local MtlsAuth = BasePlugin:extend()
+local kong = kong
+local MtlsAuth = {
+  VERSION  = "1.0.0",
+  PRIORITY = 1601,
+}
+
 local set_header = kong.service.request.set_header
 
 -- utils
@@ -34,8 +43,6 @@ local function parse_dn (dn)
 	end
 	return t
 end
-
-local MtlsAuth = BasePlugin:extend()
 
 MtlsAuth.VERSION = "1.0.0"
 MtlsAuth.PRIORITY = 975
