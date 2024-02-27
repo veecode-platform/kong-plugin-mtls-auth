@@ -47,12 +47,13 @@ local function parse_dn (dn)
 	return t
 end
 
-function MtlsAuth:new()
-    MtlsAuth.super.new(self, "mtls-auth")
-end
+-- function MtlsAuth:new()
+--     MtlsAuth.super.new(self, "mtls-auth")
+-- end
 
-function MtlsAuth:access(config)
-    MtlsAuth.super.access(self)
+-- function MtlsAuth:access(config)
+function MtlsAuth.access(self, config)
+    -- MtlsAuth.super.access(self)
 
     if ngx.var.ssl_client_verify ~= "SUCCESS" then
         kong.response.exit(config.error_response_code, [[{"error":"invalid_request", "error_description": "mTLS client not provided or invalid"}]], {
